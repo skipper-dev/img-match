@@ -1,0 +1,125 @@
+<table>
+    <tr>
+        <th>id</th>
+        <th>title</th>
+        <th>price</th>
+        <th>matches</th>
+    </tr>
+
+    <% for (var i = 0; i < data.length; i++) { %>
+        <tr>
+
+            <td>
+                <%= data[i].offer_id %>
+            </td>
+            <td>
+                <%= data[i].title %>
+            </td>
+            <td>
+                <%= data[i].price %>€
+            </td>
+            <td>
+                <% if(data[i].matches.length >0){ %>
+                    <table class="scroll">
+                        <tbody>
+                            <tr>
+                                <th>id</th>
+                                <th>title</th>
+                                <th>price</th>
+                                <th>stringmatch</th>
+                                <th>pixelmatch</th>
+                            </tr>
+                            <% for (var y = 0; y < data[i].matches.length; y++) { %>
+                                <tr>
+                                    <td>
+                                        <%= data[i].matches[y].offer_id %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].matches[y].title %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].matches[y].price %>€
+                                    </td>
+                                    <td>
+                                        <%= data[i].matches[y].stringSimilarity %>%
+                                    </td>
+                                    <td>
+                                        pixelmatch
+                                        <%=100 - data[i].matches[y].score %>%
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+
+                    </table>
+                    <% } %>
+
+            </td>
+        </tr>
+        <% } %>
+</table>
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        font-family: Tahoma, Geneva, sans-serif;
+    }
+    
+    table td {
+        padding: 15px;
+    }
+    
+    table thead td {
+        background-color: #54585d;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 13px;
+        border: 1px solid #54585d;
+    }
+    
+    table tbody td {
+        color: #636363;
+        border: 1px solid #dddfe1;
+    }
+    
+    table tbody tr {
+        background-color: #f9fafb;
+    }
+    
+    table tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+    
+    table.scroll {
+        width: 100%;
+    }
+    
+    table.scroll tbody,
+    table.scroll thead {
+        display: block;
+    }
+    
+    thead tr th {
+        height: 30px;
+        line-height: 30px;
+        /*text-align: left;*/
+    }
+    
+    table.scroll tbody {
+        height: 300px;
+        width: 100%;
+        overflow-y: auto;
+    }
+    
+    tbody td,
+    thead th {
+        width: 10%;
+        /* Optional */
+    }
+    
+    tbody td:last-child,
+    thead th:last-child {
+        border-right: none;
+    }
+</style>
