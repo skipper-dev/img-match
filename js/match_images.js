@@ -4,24 +4,18 @@ const resemble = require('resemblejs')
 const fs = require("fs");
 
 module.exports = class match_images {
-    constructor() {
-
-
-    }
     imgMatch(img1Name = "6244bbe2afcac1b795de0f8f", img2Name = "6244bbe2afcac1b795de0f8e") {
-        // console.time("pixelmatch");
-
+        //pixelmatch
         const img1 = PNG.sync.read(fs.readFileSync(`skipper-category-id/brand-id/${img1Name}.png`))
         const img2 = PNG.sync.read(fs.readFileSync(`skipper-category-id/brand-id/${img2Name}.png`))
         const { width, height } = img1;
 
         let data = pixelmatch(img1.data, img2.data, null, width, height, { threshold: 0.1 });
-        // console.log(data, "match")
-        // console.timeEnd("pixelmatch");
 
         return data
     }
     imgMatchDebug(img1Name = "6244bbe4afcac1b795de1f3d", img2Name = "6244bbe4afcac1b795de1f3e") {
+        // for debug purpose use if yuo wnat the diff image  
         const img1 = PNG.sync.read(fs.readFileSync(`skipper-category-id/brand-id/${img1Name}.png`))
         const img2 = PNG.sync.read(fs.readFileSync(`skipper-category-id/brand-id/${img2Name}.png`))
         const { width, height } = img1;
@@ -32,7 +26,7 @@ module.exports = class match_images {
         return data
     }
     async imgMatch2(img1Name = "6244bbe4afcac1b795de1f3d", img2Name = "6244bbe4afcac1b795de1f3e") {
-        // console.time("resemble");
+        //resemble;
         const img1 = fs.readFileSync(`skipper-category-id/brand-id/${img1Name}.png`)
         const img2 = fs.readFileSync(`skipper-category-id/brand-id/${img2Name}.png`)
         const data = await new Promise((resolve, reject) => {
@@ -46,10 +40,6 @@ module.exports = class match_images {
                     })
             })
             // fs.writeFileSync('./diff3.png', PNG.sync.write(data.getBuffer()));
-            // console.timeEnd("resemble");
-            // console.log(data);
         return data
-            // console.log(JSON.stringify(data))
-
     }
 }

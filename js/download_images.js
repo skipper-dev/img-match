@@ -36,8 +36,8 @@ module.exports = class ImgUrl {
                 price: element.list_price
             }
             this.IterateOffers.push(offers)
-
-            // this.downloader("skipper-category-id/brand-id/" + element._id + ".webp", element.image_url_local)
+                // the images are not downloaded automatically activate them manually the first time
+                // this.downloader("skipper-category-id/brand-id/" + element._id + ".webp", element.image_url_local)
         });
     }
     getIterateOffers() {
