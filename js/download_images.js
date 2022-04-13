@@ -56,7 +56,6 @@ module.exports = class ImgUrl {
                 fit: sharp.fit.cover,
                 position: sharp.strategy.entropy
             })
-            // .greyscale()
             .toColourspace('b-w')
             .png()
             .toFile(pathConv)

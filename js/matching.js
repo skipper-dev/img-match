@@ -34,7 +34,7 @@ module.exports = class Matching {
 
         }
         let data = JSON.stringify(matching_array);
-        fs.writeFileSync('./matching.json', data);
+        fs.writeFileSync('./matching_new.json', data);
     }
 
     async getImage() {
